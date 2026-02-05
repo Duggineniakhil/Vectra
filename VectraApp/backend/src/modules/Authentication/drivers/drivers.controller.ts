@@ -12,6 +12,7 @@ import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { Roles } from "../common/roles.decorator";
 import { RolesGuard } from "../common/roles.guard";
 import { UserRole } from "../users/user.entity";
+import { VehicleEntity } from "./vehicle.entity";
 
 @Controller("api/v1/drivers")
 @UseGuards(JwtAuthGuard)
@@ -59,7 +60,10 @@ export class DriversController {
   @Post("vehicles")
   @Roles(UserRole.DRIVER)
   @UseGuards(RolesGuard)
-  addVehicle(@Req() req: { user: { userId: string } }, @Body() dto: any) {
+  addVehicle(
+    @Req() req: { user: { userId: string } },
+    @Body() dto: Partial<VehicleEntity>,
+  ) {
     return this.driversService.addVehicle(req.user.userId, dto);
   }
 }

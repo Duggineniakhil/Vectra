@@ -39,11 +39,11 @@ export class LoginDto {
   @IsString()
   phone?: string;
 
-  @ValidateIf((o) => !o.otp)
+  @ValidateIf((o: LoginDto) => !o.otp)
   @IsString()
   password?: string;
 
-  @ValidateIf((o) => !o.password)
+  @ValidateIf((o: LoginDto) => !o.password)
   @IsString()
   otp?: string;
 }

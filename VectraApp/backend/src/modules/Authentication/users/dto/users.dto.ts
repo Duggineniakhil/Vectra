@@ -1,11 +1,11 @@
 import { IsString, IsOptional, ValidateIf, IsEmail } from "class-validator";
 
 export class CreateRiderDto {
-  @ValidateIf((o) => !o.phone)
+  @ValidateIf((o: CreateRiderDto) => !o.phone)
   @IsEmail()
   email?: string;
 
-  @ValidateIf((o) => !o.email)
+  @ValidateIf((o: CreateRiderDto) => !o.email)
   @IsString()
   phone?: string;
 
@@ -18,11 +18,11 @@ export class CreateRiderDto {
 }
 
 export class CreateDriverDto {
-  @ValidateIf((o) => !o.phone)
+  @ValidateIf((o: CreateDriverDto) => !o.phone)
   @IsEmail()
   email?: string;
 
-  @ValidateIf((o) => !o.email)
+  @ValidateIf((o: CreateDriverDto) => !o.email)
   @IsString()
   phone?: string;
 

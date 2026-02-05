@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, IsNull } from "typeorm";
-import { UserEntity } from "../users/user.entity";
+import { UserEntity, UserRole } from "../users/user.entity";
 import { DriverProfileEntity } from "../drivers/driver-profile.entity";
 import { AdminAuditEntity, AdminAction } from "./admin-audit.entity";
 
@@ -27,7 +27,7 @@ export class AdminService {
     if (!user) throw new NotFoundException("User not found");
 
     let driverProfile = null;
-    if (user.role === "DRIVER") {
+    if (user.role === UserRole.DRIVER) {
       driverProfile = await this.driverRepo.findOne({
         where: { userId: user.id },
       });

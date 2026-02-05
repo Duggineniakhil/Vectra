@@ -13,7 +13,7 @@ export class TripsService {
     private readonly eventRepo: Repository<TripEventEntity>,
   ) {}
 
-  async getTrip(id: string): Promise<any> {
+  async getTrip(id: string) {
     const trip = await this.tripRepo.findOne({
       where: { id },
       relations: ["driver", "tripRiders", "tripRiders.rider"],
