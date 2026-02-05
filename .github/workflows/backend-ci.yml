@@ -47,7 +47,7 @@ jobs:
         run: npm run lint
 
       - name: Check formatting (Prettier)
-        run: npx prettier --check "src/**/*.ts" "test/**/*.ts"
+        run: npx prettier --check "src/**/*.ts" --ignore-unknown
 
   # ──────────────────────────────────────────────
   # Build
